@@ -1,3 +1,6 @@
+
+import com.sun.source.doctree.IdentifierTree;
+
 /** Functions for checking if a given string is an anagram. */
 public class Anagram {
 	public static void main(String args[]) {
@@ -16,6 +19,7 @@ public class Anagram {
 		// Performs a stress test of randomAnagram 
 		String str = "1234567";
 		Boolean pass = true;
+
 		//// 10 can be changed to much larger values, like 1000
 		for (int i = 0; i < 10; i++) {
 			String randomAnagram = randomAnagram(str);
@@ -28,15 +32,19 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
+		boolean isAnagram =
+		if (str1.length() !== str2.length())
 		return false;
+
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
-	public static String preProcess(String str) {
-		// Replace the following statement with your code
+	public static String preProcess(String str) 
+	{
+    if char
+
 		return "";
 	} 
 	   
