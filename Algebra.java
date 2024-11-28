@@ -81,7 +81,7 @@ public class Algebra {
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		int resultX = x;
+		int resultX = 1;
 		if (n == 0) 
 		{
 			resultX = 1;
@@ -95,7 +95,8 @@ public class Algebra {
 		}
 			
 		return resultX;
-	}
+    }
+
 
 
 	// Returns the integer part of x1 / x2 
