@@ -1,4 +1,4 @@
-// Computes the periodical payment necessary to pay a given loan.
+
 public class LoanCalc {
 	
 	static double epsilon = 0.001;  // Approximation accuracy
@@ -46,9 +46,11 @@ public class LoanCalc {
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		
 		double periodicalPayment = loan/n;
+		iterationCounter = 0;
 		while (endBalance(loan, rate, n, periodicalPayment) >= epsilon ) //if the test failed myabe we need to try with >=0
 		{
 			periodicalPayment = periodicalPayment + epsilon;
+			iterationCounter++;
 		}
 			
 			
