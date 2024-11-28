@@ -12,6 +12,7 @@ public class LoanCalc {
 		double loan = Double.parseDouble(args[0]);
 		double rate = Double.parseDouble(args[1]);
 		int n = Integer.parseInt(args[2]);
+		//120000, Interest Rate 3.5%, and Periods 60
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 
 		// Computes the periodical payment using brute force search
@@ -30,7 +31,7 @@ public class LoanCalc {
 	private static double endBalance(double loan, double rate, int n, double payment) {	
 		// Replace the following statement with your code
 		double sum = loan;
-		sum = (sum - payment ) * (1 + rate/100);
+	
            for (int i = 0; i<=n-1; i++) 
 		   {
 			sum = (sum - payment ) * (1 + rate/100);
@@ -47,7 +48,7 @@ public class LoanCalc {
 		
 		double periodicalPayment = loan/n;
 		iterationCounter = 0;
-		while (endBalance(loan, rate, n, periodicalPayment) >= epsilon ) //if the test failed myabe we need to try with >=0
+		while (endBalance(loan, rate, n, periodicalPayment) > epsilon ) //if the test failed myabe we need to try with >=0
 		{
 			periodicalPayment = periodicalPayment + epsilon;
 			iterationCounter++;
@@ -64,6 +65,26 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         // Replace the following statement with your code
-		return 0;
-    }
-}
+		double paymentHigh = loan;
+		double paymentLow = loan/n;
+		double paymentGuess = (paymentHigh + paymentLow) / 2;
+		iterationCounter = 0;
+		while( (paymentHigh - paymentLow) >= epsilon)
+		{
+			if (endBalance(loan, rate, n, paymentGuess) * endBalance(loan, rate, n, paymentLow) > 0)
+			{
+				paymentLow = paymentGuess;
+			}
+			else 
+			{
+				paymentHigh = paymentGuess;
+			}
+			iterationCounter++;
+			paymentGuess = (paymentLow + paymentHigh)/2;
+			//System.out.println("correct intial in the loop is  " + initialGuess);
+			//System.out.println("correct endbalance is " + endBalance(loan, rate, n, initialGuess));
+		}
+    	return paymentGuess;
+		}
+	}
+
